@@ -1,4 +1,6 @@
 import { AccountController } from "./controllers/AccountController.js";
+import { HousesController } from "./controllers/HousesController.js"
+import { JobsController } from "./controllers/JobsController.js"
 import { CarsController } from "./controllers/CarsController.js";
 import { HomeController } from "./controllers/HomeController.js";
 import { AuthGuard } from "./services/AuthService.js";
@@ -9,14 +11,7 @@ export const router = new Router([
   {
     path: '',
     controllers: [HomeController],
-    view: /*html*/`
-    <div class="bg-white p-3">
-      <div class="card-body">
-        <p>Home Page</p>
-        <button class="btn btn-dark" onclick="app.HomeController.testButton()">😎</button>
-      </div>
-    </div>
-    `
+    view: /*html*/``
   },
   {
     path: '#/about',
@@ -32,6 +27,16 @@ export const router = new Router([
     middleware: [AuthGuard],
     controllers: [AccountController],
     view: 'app/views/AccountView.html',
+  },
+  {
+    path: '#/houses',
+    controllers: [HousesController],
+    view: 'app/views/HousesView.html',
+  },
+  {
+    path: '#/jobs',
+    controllers: [JobsController],
+    view: 'app/views/JobsView.html',
   }
 ])
 
