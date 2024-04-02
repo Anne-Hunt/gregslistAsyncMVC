@@ -13,6 +13,20 @@ class HouseService {
         AppState.houses = houses
     }
 
+    async createHouses(houseData) {
+        let response = await api.post('api/houses')
+        console.log('service housing', response)
+        const house = new House(response.data)
+        AppState.houses.push(house)
+    }
+
+    async trashHouse(houseId) {
+        let response = await api.delete(`api/houses/${houseId}`)
+        console.log('trashing house', response)
+        const houseToTrash = AppState.houses.findIndex(house => house.id == houseId)
+        AppState.houses.splice(houseToTrash, 1)
+    }
+
 
 }
 
