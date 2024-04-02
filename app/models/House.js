@@ -34,9 +34,18 @@ export class House {
         </div>
       </div>
     </div>
-    <button onclick="app.HouseController.trashHouse('${this.id}')"class="btn btn-danger rounded border-5"><i class="mdi mdi-delete-circle-outline"></i></button>
+    ${this.HouseTrashButton}
   </div>
 </div>  
         `
+  }
+
+  get HouseTrashButton() {
+    if (this.creatorId == AppState.account?.id) {
+      return `
+        <button onclick="app.HousesController.trashHouse('${this.id}')"class="btn btn-danger rounded border-5"><i class="mdi mdi-delete-circle-outline"></i></button>
+        `
+    }
+    return ''
   }
 }

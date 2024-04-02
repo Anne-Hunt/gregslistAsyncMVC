@@ -1,5 +1,5 @@
 import { AppState } from "../AppState.js"
-import { jobService } from "../services/JobsService.js"
+import { jobService } from "../services/JobService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
@@ -54,7 +54,9 @@ export class JobsController {
     async trashJob(jobId) {
         try {
             console.log('delete button selected', jobId)
-            Pop.confirm("Do you really want to delete this job?", "warning")
+            let result = await Pop.confirm("Do you really want to delete this job?", "warning")
+            if (result == false) return
+
             await jobService.trashJobs(jobId)
         } catch (error) {
             console.log('ERROR')

@@ -1,5 +1,5 @@
 import { AppState } from "../AppState.js"
-import { houseService } from "../services/HousesService.js"
+import { houseService } from "../services/HouseService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
@@ -57,8 +57,10 @@ export class HousesController {
     async trashHouse(houseId) {
         try {
             console.log('delete engaged on house', houseId)
-            Pop.confirm("Do you want to delete this house?", "warning")
-            await houseService.trashHouse()
+            let result = await Pop.confirm("Do you want to delete this house?", "warning")
+            if (result == false) return
+
+            await houseService.trashHouse(houseId)
         } catch (error) {
             console.log("ERROR")
             Pop.toast("Sorry, unable to delete", "warning")

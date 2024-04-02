@@ -13,7 +13,7 @@ class JobService {
     }
 
     async createJobs(jobData) {
-        let response = await api.post('api/jobs')
+        let response = await api.post('api/jobs', jobData)
         console.log('service jobbing', response)
         const job = new Job(response.data)
         AppState.jobs.push(job)

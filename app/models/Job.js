@@ -31,10 +31,18 @@ export class Job {
                 </div>
                 <div class="text-secondary">Listed on ${this.createdAt.toDateString()}</div>
             </div>
-            <button onclick="app.JobController.trashJob('${this.id}')" class="btn btn-danger rounded border-5"><i
-                    class="mdi mdi-delete-circle-outline"></i></button>
-        </div>
-    </div>
-        `
+            ${this.JobTrashButton}
+            </div>
+          </div>  
+                  `
+  }
+
+  get JobTrashButton() {
+    if (this.creatorId == AppState.account?.id) {
+      return `
+                  <button onclick="app.JobsController.trashJob('${this.id}')"class="btn btn-danger rounded border-5"><i class="mdi mdi-delete-circle-outline"></i></button>
+                  `
+    }
+    return ''
   }
 }

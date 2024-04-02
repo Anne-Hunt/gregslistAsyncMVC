@@ -1,31 +1,28 @@
 <section id="job-form" class="row d-none p-3">
-    <form action="submit">
-        <form action="submit" onsubmit="app.JobController.createJobs()">
-            <label class="form-label" for="job-title">Job Title</label>
-            <input type="text" name="jobTitle" id="job-title" class="form-control">
-            <div>
-                <label class="form-label" for="job-rate">Pay Rate</label>
-                <input type="text" name="rate" id="job-rate" class="form-control">
-            </div>
-            <div>
-                <label class="form-label" for="job-hours">Hours</label>
-                <input type="text" name="hours" id="job-hours" class="form-control">
-            </div>
-            <div>
-                <label class="form-label" for="job-description">Job Description</label>
-                <input type="textarea" name="description" id="description" class="form-control">
-            </div>
-            <div>
-                <label class="form-label" for="job-company">Company</label>
-                <input type="text" name="company" id="job-company" class="form-control">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </div>
-
-
-        </form>
+    <form onsubmit="app.JobsController.createJobs()">
+        <label class="form-label" for="job-title">Job Title</label>
+        <input type="text" name="jobTitle" id="job-title" class="form-control">
+        <div>
+            <label class="form-label" for="job-rate">Pay Rate</label>
+            <input type="text" name="rate" id="job-rate" class="form-control">
+        </div>
+        <div>
+            <label class="form-label" for="job-hours">Hours</label>
+            <input type="text" name="hours" id="job-hours" class="form-control">
+        </div>
+        <div>
+            <label class="form-label" for="job-description">Job Description</label>
+            <input type="textarea" name="description" id="description" class="form-control">
+        </div>
+        <div>
+            <label class="form-label" for="job-company">Company</label>
+            <input type="text" name="company" id="job-company" class="form-control">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
     </form>
+
 </section>
 
 <section id="job-display" class="row p-2">
